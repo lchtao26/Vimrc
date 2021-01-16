@@ -78,5 +78,5 @@ nnoremap <silent> <a-right> :execute 'silent! tabmove ' . (tabpagenr()+1)<cr>
 noremap <tab> <c-w>w:cd %:p:h<cr>:<cr>
 noremap <s-tab> :wincmd p<cr>
 
-inoremap <silent> <c-c> <c-c>:call system('im-select com.apple.keylayout.ABC')<cr>
-inoremap <silent> <esc> <esc>:call system('im-select com.apple.keylayout.ABC')<cr>
+noremap <silent> <c-c> <c-c>:call system('im-select com.apple.keylayout.ABC')<cr>
+noremap <silent> <esc> <esc>:call system('im-select com.apple.keylayout.ABC')<cr>
