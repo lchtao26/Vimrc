@@ -11,7 +11,7 @@ Plugin 'rstacruz/vim-closer'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
-" Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 call vundle#end()
 filetype plugin indent on
 
@@ -27,9 +27,15 @@ let g:ctrlp_custom_ignore = {
 " OneDark
 let g:onedark_hide_endofbuffer=1
 let g:onedark_termcolors=256 " ====================== BootStrap 
+
+" UltiSnips
+let g:UltiSnipsSnippetsDir="~/.vim"
+let g:UltiSnipsSnippetDirectories=["myUltiSnippets"]
+
 au BufNewFile,BufReadPost *.vue,*.wxml set ft=html
 au BufNewFile,BufReadPost *.wxss set ft=css
 autocmd BufEnter * silent! lcd %:p:h
+autocmd InsertLeave * call system('im-select com.apple.keylayout.ABC')
 
 set autoindent
 set autoread
@@ -77,6 +83,3 @@ nnoremap <silent> <a-right> :execute 'silent! tabmove ' . (tabpagenr()+1)<cr>
 
 noremap <tab> <c-w>w:cd %:p:h<cr>:<cr>
 noremap <s-tab> :wincmd p<cr>
-
-noremap <silent> <c-c> <c-c>:call system('im-select com.apple.keylayout.ABC')<cr>
-noremap <silent> <esc> <esc>:call system('im-select com.apple.keylayout.ABC')<cr>
