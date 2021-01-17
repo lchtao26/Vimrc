@@ -12,6 +12,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'SirVer/ultisnips'
+Plugin 'dbakker/vim-projectroot'
 call vundle#end()
 filetype plugin indent on
 
@@ -51,6 +52,7 @@ set number
 set path+=**
 set ruler
 set showcmd
+set ignorecase
 set smartcase
 set tabstop=2 shiftwidth=2
 set wildmenu
@@ -60,25 +62,29 @@ colorscheme onedark
 syntax on
 
 " =================== Keys Mapping
-nnoremap H ^
-nnoremap L $
-onoremap H ^
-onoremap L $
-vnoremap H ^
-vnoremap L $
-noremap <space> /
-noremap <s-space> ?
-noremap <leader>y "+y
-noremap <leader>Y "+Y
-noremap <leader>p "+p
-noremap <leader>P "+P
-noremap <leader>so  :source $MYVIMRC<cr>
-noremap <leader>, :e $MYVIMRC<cr>
+noremap <space>y "+y
+noremap <space>Y "+Y
+noremap <space>p "+p
+noremap <space>P "+P
 
-nnoremap <c-left> :tabprevious<cr>
-nnoremap <c-right> :tabnext<cr>
-nnoremap <silent> <a-left> :execute 'silent! tabmove ' . (tabpagenr()-2)<cr>
-nnoremap <silent> <a-right> :execute 'silent! tabmove ' . (tabpagenr()+1)<cr>
+noremap <space>cd :cd <c-r>=expand("%:p:h") . "/" <cr>
+noremap <space>ew :e <c-r>=expand("%:p:h") . "/" <cr><cr>
+noremap <space>es :sp <c-r>=expand("%:p:h") . "/" <cr><cr>
+noremap <space>ev :vsp <c-r>=expand("%:p:h") . "/" <cr><cr>
+noremap <space>et :tabe <c-r>=expand("%:p:h") . "/" <cr><cr>
+
+noremap <space>er :e <c-r>=expand(projectroot#guess()) . "/" <cr><cr>
+noremap <space>ver :vsp <c-r>=expand(projectroot#guess()) . "/" <cr><cr>
+
+noremap <space>w :w<cr>
+noremap <space>wa :wall<cr>
+
+noremap <leader>, :vs $MYVIMRC<cr>
+noremap <leader>so  :source $MYVIMRC<cr>
 
 noremap <tab> <c-w>w:cd %:p:h<cr>:<cr>
-noremap <s-tab> :wincmd p<cr>
+noremap <silent> <s-tab> :wincmd p<cr>
+
+nnoremap <c-n> :tabnew<cr>
+nnoremap H :tabprev<cr>
+nnoremap L :tabnext<cr>
