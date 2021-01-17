@@ -35,6 +35,7 @@ let g:UltiSnipsSnippetDirectories=["myUltiSnippets"]
 au BufNewFile,BufReadPost *.vue,*.wxml set ft=html
 au BufNewFile,BufReadPost *.wxss set ft=css
 autocmd BufEnter * silent! lcd %:p:h
+autocmd BufEnter * call system('im-select com.apple.keylayout.ABC')
 autocmd InsertLeave * call system('im-select com.apple.keylayout.ABC')
 
 set autoindent
