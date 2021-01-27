@@ -1,0 +1,80 @@
+" ========================== Plugin
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'joshdick/onedark.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'darthmall/vim-vue'
+Plugin 'dbakker/vim-projectroot'
+Plugin 'prettier/vim-prettier'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-obsession'
+call vundle#end()
+
+" CtrlP
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$\|dist',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+
+" OneDark
+let g:onedark_hide_endofbuffer=1
+let g:onedark_termcolors=256
+
+" UltiSnips
+let g:UltiSnipsSnippetsDir="~/.vim"
+let g:UltiSnipsSnippetDirectories=["myUltiSnippets"]
+
+" ====================== BootStrap 
+au BufNewFile,BufReadPost *.wxml set ft=html
+au BufNewFile,BufReadPost *.wxss set ft=css
+autocmd BufEnter * silent! lcd %:p:h
+
+filetype plugin indent on
+colorscheme onedark
+syntax on
+
+set autoindent
+set autoread
+set visualbell
+set cursorline
+set complete+=k
+set dictionary+=/usr/share/dict/words
+set expandtab
+set hidden
+set hlsearch
+set incsearch
+set laststatus=2
+set number
+set path+=**
+set ruler
+set showcmd
+set ignorecase
+set smartcase
+set tabstop=2 shiftwidth=2
+set wildmenu
+set wildmode=list:longest,full
+set undofile
+set undodir=~/.vim/undo
+
+" =================== Keys Mapping
+noremap <Space>so :source $MYVIMRC<CR>
+noremap <Space>w :w<CR>
+
+cnoremap '' <C-R>=fnameescape(expand('%:h')).'/'<CR>
+cnoremap :: <C-R>=projectroot#guess().'/'<CR>
+
+
+noremap <Space>ew :e <C-R>=expand("%:p:h") . "/" <CR>
+noremap <Space>es :sp <C-R>=expand("%:p:h") . "/" <CR>
+noremap <Space>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
+noremap <Space>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
+
+noremap <Space>cp :let @+ = expand("%:p")<CR>
