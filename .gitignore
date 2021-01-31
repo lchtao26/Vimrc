@@ -1,4 +1,5 @@
-dotVim/bundle
 .DS_Store
 .netrwhist
 dotVim/undo
+dotVim/bundle/*
+!dotVim/bundle/Vundle.vim
