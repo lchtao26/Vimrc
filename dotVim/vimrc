@@ -3,6 +3,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'bronson/vim-visual-star-search'
+Plugin 'vim-scripts/JavaScript-Indent'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'SirVer/ultisnips'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'darthmall/vim-vue'
