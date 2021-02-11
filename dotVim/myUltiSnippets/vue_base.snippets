@@ -1,0 +1,236 @@
+snippet vbase "Base for Vue File with SCSS"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script>
+	export default {
+		${0}
+	}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+endsnippet
+
+snippet vbase-sass "Base for Vue File with PostCSS"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script>
+	export default {
+		${0}
+	}
+</script>
+
+<style lang="sass" scoped>
+
+</style>
+endsnippet
+
+snippet vbase-less "Base for Vue File with PostCSS"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script>
+	export default {
+		${0}
+	}
+</script>
+
+<style lang="less" scoped>
+
+</style>
+endsnippet
+
+snippet vbase-pcss "Base for Vue File with PostCSS"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script>
+	export default {
+		${0}
+	}
+</script>
+
+<style lang="postcss" scoped>
+
+</style>
+endsnippet
+
+snippet vbase-css "Base for Vue File with CSS"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script>
+	export default {
+		${0}
+	}
+</script>
+
+<style scoped>
+
+</style>
+endsnippet
+
+snippet vbase-styl "Base for Vue File with Stylus"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script>
+	export default {
+		${0}
+	}
+</script>
+
+<style lang="stylus" scoped>
+
+</style>
+endsnippet
+
+snippet vbase-ts "Base for Vue File with Typescript"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script lang="ts">
+	import Vue from 'vue'
+
+	export default Vue.extend({
+		${0}
+	})
+</script>
+
+<style scoped>
+
+</style>
+endsnippet
+
+snippet vbase-ns "Base for Vue File with no styles"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script>
+	export default {
+		${0}
+	}
+</script>
+endsnippet
+
+snippet vbase-3 "Base for Vue File Composition API with SCSS"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script>
+export default {
+	setup () {
+		${0}
+
+		return {}
+	}
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+endsnippet
+
+snippet vbase-3-reactive "Base for Vue File Composition API with SCSS"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script>
+import { reactive, toRefs } from '@vue/composition-api'
+
+export default {
+	setup () {
+		const state = reactive({
+			${0:count}: ${1:0},
+		})
+	
+		return {
+			...toRefs(state),
+		}
+	}
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+endsnippet
+
+snippet vbase-3-ts "Base for Vue File Composition API - Typescript"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+	setup () {
+		${0}
+
+		return {}
+	}
+})
+</script>
+
+<style scoped>
+
+</style>
+endsnippet
+
+snippet vbase-ts-class "Base for Vue File with Class based Typescript format"
+<template>
+	<div>
+
+	</div>
+</template>
+
+<script lang="ts">
+	import { Component, Vue } from 'vue-property-decorator';
+
+	@Component
+	export default class ${0} extends Vue {
+		
+	}
+</script>
+
+<style scoped>
+
+</style>
+endsnippet
