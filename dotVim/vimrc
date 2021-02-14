@@ -107,25 +107,14 @@ set undofile
 set undodir=~/.vim/undo
 
 " =================== Keys Mapping
-cnoremap ;; <C-R>=fnameescape(expand('%:h')).'/'<CR>
-cnoremap :: <C-R>=projectroot#guess().'/'<CR>
-
-noremap <Space>cp :let @+ = expand("%:p")<CR>
-noremap <Space>ew :e <C-R>=expand("%:p:h") . "/" <CR>
-noremap <Space>es :sp <C-R>=expand("%:p:h") . "/" <CR>
-noremap <Space>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
-noremap <Space>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-noremap <Space>so :source $MYVIMRC<CR>
-
-noremap <Space>y "+y
-noremap <Space>Y "+Y
-
-" Project Root
-noremap <Space>E :e <C-R>=projectroot#guess().'/'<CR><CR>
-
 " Ale Fix
-nnoremap <Space>af :ALEFix<CR>
+nnoremap <Leader>af :ALEFix<CR>
+
+noremap <Leader>cp :let @+ = expand("%:p")<CR>
+noremap <Leader>so :source $MYVIMRC<CR>
+
+cnoremap ;; <C-R>=fnameescape(expand('%:p:h')).'/'<CR>
+cnoremap :: <C-R>=projectroot#guess().'/'<CR>
 
 nnoremap <C-s> :w<CR>
 vnoremap <C-s> <Esc><C-s>gv
