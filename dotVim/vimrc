@@ -1,25 +1,22 @@
 " ========================== Plugin
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'bronson/vim-visual-star-search'
-Plugin 'vim-scripts/JavaScript-Indent'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'SirVer/ultisnips'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'bronson/vim-visual-star-search'
 Plugin 'darthmall/vim-vue'
 Plugin 'dbakker/vim-projectroot'
+Plugin 'dense-analysis/ale'
 Plugin 'joshdick/onedark.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'prettier/vim-prettier'
-Plugin 'brooth/far.vim'
-Plugin 'dense-analysis/ale'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-surround'
-Plugin 'yuezk/vim-js'
+Plugin 'vim-scripts/JavaScript-Indent'
 call vundle#end()
 
 "Netrw
