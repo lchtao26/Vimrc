@@ -120,7 +120,6 @@ noremap <Space>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
 noremap <Space>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 noremap <Space>so :source $MYVIMRC<CR>
-noremap <Space>w :w<CR>
 
 noremap <Space>y "+y
 noremap <Space>Y "+Y
@@ -130,6 +129,10 @@ noremap <Space>E :e <C-R>=projectroot#guess().'/'<CR><CR>
 
 " Ale Fix
 nnoremap <Space>af :ALEFix<CR>
+
+nnoremap <C-s> :w<CR>
+vnoremap <C-s> <Esc><C-s>gv
+inoremap <C-s> <Esc><C-s>
 
 noremap <C-n> :tabnew<Cr>
 noremap L :tabnext<CR>
