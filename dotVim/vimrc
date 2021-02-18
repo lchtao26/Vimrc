@@ -5,6 +5,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'bronson/vim-visual-star-search'
+Plugin 'brooth/far.vim'
 Plugin 'darthmall/vim-vue'
 Plugin 'dbakker/vim-projectroot'
 Plugin 'dense-analysis/ale'
@@ -16,7 +17,6 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/JavaScript-Indent'
 call vundle#end()
 
 "Netrw
