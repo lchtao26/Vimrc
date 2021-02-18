@@ -1,9 +1,7 @@
 " ========================== Plugin
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
 Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'SirVer/ultisnips'
 Plugin 'bronson/vim-visual-star-search'
 Plugin 'brooth/far.vim'
 Plugin 'darthmall/vim-vue'
@@ -13,13 +11,14 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'prettier/vim-prettier'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'tpope/vim-abolish'
+Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/JavaScript-Indent'
+Plugin 'VundleVim/Vundle.vim'
 call vundle#end()
 
-"Netrw
+" Netrw
 let g:netrw_list_hide= '.*\.swp$,.*\.swo$'
 
 " CtrlP
@@ -41,7 +40,6 @@ let g:UltiSnipsSnippetDirectories=["myUltiSnippets"]
 
 " ALE
 let g:ale_sign_column_always = 1
-
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
@@ -57,18 +55,6 @@ let g:ale_fixers = {
 \   '*': ['eslint'],
 \}
 "
-
-" Qargs
-command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
-function! QuickfixFilenames()
-  " Building a hash ensures we get each buffer only once
-  let buffer_numbers = {}
-  for quickfix_item in getqflist()
-    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-  endfor
-  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
-endfunction
-
 
 " ====================== BootStrap 
 au BufNewFile,BufReadPost *.wxml set ft=html
@@ -86,47 +72,36 @@ set visualbell
 set cursorline
 set complete+=k
 set dictionary+=/usr/share/dict/words
-set expandtab
 set hidden
 set hlsearch
 set incsearch
-set includeexpr=substitute(v:fname,'^\\/','','')
-set suffixesadd=.js,.jsx,.es,.es6,.cjs,.mjs,.jsm,.vue,.json
 set laststatus=2
-set statusline+=%F
+set statusline=%F
 set number
 set path+=**
 set ruler
-set showcmd
 set ignorecase
 set smartcase
 set tabstop=2 shiftwidth=2
+set expandtab
 set wildmenu
 set wildmode=list:longest,full
 set undofile
 set undodir=~/.vim/undo
+set includeexpr=substitute(v:fname,'^\\/','','')
+set suffixesadd=.js,.jsx,.es,.es6,.cjs,.mjs,.jsm,.vue,.json
 
 " =================== Keys Mapping
-cnoremap ;; <C-R>=fnameescape(expand('%:h')).'/'<CR>
+noremap <Leader>af :ALEFix<CR>
+noremap <Leader>cp :let @+ = expand("%:p")<CR>
+noremap <Leader>so :source $MYVIMRC<CR>
+
+cnoremap ;; <C-R>=fnameescape(expand('%:p:h')).'/'<CR>
 cnoremap :: <C-R>=projectroot#guess().'/'<CR>
 
-noremap <Space>cp :let @+ = expand("%:p")<CR>
-noremap <Space>ew :e <C-R>=expand("%:p:h") . "/" <CR>
-noremap <Space>es :sp <C-R>=expand("%:p:h") . "/" <CR>
-noremap <Space>ev :vsp <C-R>=expand("%:p:h") . "/" <CR>
-noremap <Space>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-noremap <Space>so :source $MYVIMRC<CR>
-noremap <Space>w :w<CR>
-
-noremap <Space>y "+y
-noremap <Space>Y "+Y
-
-" Project Root
-noremap <Space>E :e <C-R>=projectroot#guess().'/'<CR><CR>
-
-" Ale Fix
-nnoremap <Space>af :ALEFix<CR>
+nnoremap <C-s> :w<CR>
+vnoremap <C-s> <Esc><C-s>gv
+inoremap <C-s> <Esc><C-s>
 
 noremap <C-n> :tabnew<Cr>
 noremap L :tabnext<CR>
