@@ -1,31 +1,97 @@
-snippet app "Description" b
+
+snippet page "Page页面对应的JSON文件配置项"
 {
-  "pages": [
-  ],
-  "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "${1:title}",
-    "navigationBarBackgroundColor": "${2:fbf9fe}",
-    "backgroundColor": "#fbf9fe"
-  },
-  "tabBar": {
-    "color": "#dddddd",
-    "selectedColor": "#3cc51f",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
-    "list": [{
-      "pagePath": "page/component/index",
-      "iconPath": "image/icon_component.png",
-      "selectedIconPath": "image/icon_component_HL.png",
-      "text": "组件"
-    }]
-  },
-  "networkTimeout": {
-    "request": 10000,
-    "connectSocket": 10000,
-    "uploadFile": 10000,
-    "downloadFile": 10000
-  },
-  "debug": true
+	"navigationBarBackgroundColor": "#000000",
+	"navigationBarTextStyle": "white",
+	"navigationBarTitleText": "",
+	"backgroundColor": "#ffffff",
+	"backgroundTextStyle": "dark|light",
+	"enablePullDownRefresh": false,
+	"disableScroll": false,
+	"onReachBottomDistance": false
 }
+endsnippet
+
+snippet pages "App对应的JSON文件pages配置项"
+"pages": [
+	"pages/index/index"
+],
+${1}
+endsnippet
+
+snippet window "App对应的JSON文件window配置项"
+"window": {
+	"navigationBarBackgroundColor": "#000000",
+	"navigationBarTextStyle": "white",
+	"navigationBarTitleText": "",
+	"navigationStyle": "default|custom",
+	"backgroundColor": "#ffffff",
+	"backgroundTextStyle": "dark|light",
+	"backgroundColorTop": "#ffffff",
+	"backgroundColorBottom": "#ffffff",
+	"enablePullDownRefresh": true,
+	"onReachBottomDistance": 50
+},
+${1}
+endsnippet
+
+snippet tabbar "App对应的JSON文件tabbar配置项"
+"tabBar": {
+	"color": "${1}",
+	"selectedColor": "${2}",
+	"backgroundColor": "${3}",
+	"position": "bottom",
+	"borderStyle": "black",
+	"list": [
+		{
+			"pagePath": "${4}",
+			"text": "${5}",
+			"iconPath": "${6}",
+			"selectedIconPath": "${7}"
+		}
+	]
+},
+${8}
+endsnippet
+
+snippet networktimeout "App对应的JSON文件networktimeout配置项,超时设置"
+"networkTimeout": {
+	"request": ${1:10000},
+	"connectSocket": ${2:10000},
+	"uploadFile": ${3:10000},
+	"downloadFile": ${4:10000}
+},
+${5}
+endsnippet
+
+snippet debug "App对应的JSON文件debug配置项,是否是调试模式"
+"debug":true,
+endsnippet
+
+snippet functionalPages "是否启用插件功能页"
+"functionalPages":false,
+endsnippet
+
+snippet subPackages "App对应的JSON文件subPackages配置项,分包结构配置"
+"subPackages":[],
+endsnippet
+
+snippet workers "Worker代码放置的目录"
+"workers":"",
+endsnippet
+
+snippet requiredBackgroundModes "需要在后台使用的能力，如“音乐播放”"
+"requiredBackgroundModes":["audio"],
+endsnippet
+
+snippet plugins "使用到的插件"
+"plugins":{},
+endsnippet
+
+snippet preloadRule "分包预下载规则"
+"preloadRule":{},
+endsnippet
+
+snippet resizable "iPad 小程序是否支持屏幕旋转，默认关闭"
+"resizable":false,
 endsnippet

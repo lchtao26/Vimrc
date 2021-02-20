@@ -1,356 +1,232 @@
 
-#jordow's snippets:
-
-# module definition
-snippet mod "Module declaration"
-/**
- * @providesModule ${1:`!p snip.rv = snip.basename`}
- */
-
-var $1 = ${2:{
-  ${3: /* fields */}
-}};
-
-module.exports = $1;
+snippet imp "Imports entire module statement in ES6 syntax"
+import ${2:moduleName} from '${1:module}';$0
 endsnippet
 
-snippet for "for (...) {...}" !
-for (var ${2:i} = 0; $2 < ${1:Things}.length; $2++) {
-	${3:$1[$2]}$0
-}
+snippet imn "Imports entire module in ES6 syntax without module name"
+import '${1:module}';$0
 endsnippet
 
-snippet te "tripple equals" !w
-${1:one} === ${2:two}$0
+snippet imd "Imports only a portion of the module in ES6 syntax"
+import { $2 } from '${1:module}';$0
 endsnippet
 
-snippet ne "not tripple equals" !w
-${1:one} !== ${2:two}
+snippet ime "Imports everything as alias from the module in ES6 syntax"
+import * as ${2:alias} from '${1:module}';$0
 endsnippet
 
-snippet a
-<a href="$1"${2: class="${3:link}"}>
-	$0
-</a>
+snippet ima "Imports a specific portion of the module by assigning a local alias in ES6 syntax"
+import { ${2:originalName} as ${3:alias} } from '${1:module}';$0
 endsnippet
 
-# Then do imap (  (<Tab>
-#snippet ( "paren insertion" !w
-#($0)
-#endsnippet
-
-snippet forr "for (...) {...}" !
-for (${2:i} = 0; $2 < ${1:Things}.length; $2++) {
-	${3:$1[$2]}$0
-}
+snippet rqr "Require a package"
+require('${1:package}');
 endsnippet
 
-snippet forin "forin (...) {...}" !
-for (var ${1:key} in ${2:obj}) {
-	if (!$2.hasOwnProperty($1)) {
-		continue;
-	}
-	${3:$2[$1]}$0
-}
+snippet req "Require a package to const"
+const ${1:packageName} = require('${1:package}');$0
 endsnippet
 
-snippet throwIf "throwIf(bool, ERR);" !
-throwIf(${1:condition}, ${2:ERR});
-endsnippet
-
-snippet db "debugger;" !
-debugger;
-endsnippet
-
-snippet dbif "if(x) debugger;" !
-if (${1:cond}) {
-	debugger;
-}
-endsnippet
-
-snippet forinn "forinn (...) {...}" !
-for (${1:key} in ${2:obj}) {
-	if (!$2.hasOwnProperty($1)) {
-		continue;
-	}
-	${3:$2[$1]}$0
-}
-endsnippet
-
-snippet ifcond "ifcondition" !
-if (${VISUAL:expr}) {
-	$0
-}
-endsnippet
-
-snippet ret "return ;" !
-return $0;
-endsnippet
-
-snippet if "if" !
-if (${1:true}) {
-	${VISUAL}$0
-}
-endsnippet
-
-snippet try "try" !
-try {
-	${VISUAL}$0
-} catch (e) {
-	$0
-}
-endsnippet
-
-snippet code "<code>" !
-<code>$1</code>$0
-endsnippet
-
-snippet param "<code>" !
-@param {${1:type}} ${2:name Description}
-endsnippet
-
-
-snippet testmod "Test module"
-var mocks = require('mock-modules')
-	.dontMock('${1:moduleToTest}');
-
-var $1;
-
-describe('$1', function() {
-	beforeEach(function() {
-		require('mock-modules').dumpCache();
-		$1 = require('$1');
-	});
-
-	it('should pass the test', function() {
-		expect(function() {
-			throw "You need to implement this!";
-		}).toThrow();
-	});
-});
-endsnippet
-
-snippet it "Test case"
-it('${1:should pass the test}', function() {
-	${0://code here};
-});
-endsnippet
-
-snippet expect "Expect"
-expect(${1:thing}).${2:toEqual(${3:thingToBeEqualTo})};
-endsnippet
-
-# snip.rv is the "return value and !p executes python code. snip.fn is the
-# complete file name, snip.basename is the base of the file name
-# You can use snip.t[2] to get the second placeholder value and run arbitrary
-# expressions on it!
-
-snippet time "time block" !
-var start = (new Date()).getTime();
-${VISUAL}$0
-var end = (new Date()).getTime();
-alert('total time:' + (end - start));
-endsnippet
-
-snippet profile "this.setState." !
-console.profile('$0');
-${VISUAL}$0
-console.profileEnd();
-endsnippet
-
-
-snippet ss "this.setState." !
-this.setState({
-	${1:stateField}: ${2:newValue}
-});
-endsnippet
-
-snippet s "this.state." !w
-this.state.
-endsnippet
-
-snippet p "this.props." !w
-this.props.
-endsnippet
-
-snippet proto "Prototype method" !
-${1:`!p snip.rv = snip.basename`}.prototype.${2:methodName} = function(${3:args}) {
+snippet mde "Module exports from Common JS, node syntax at ES6"
+module.exports = {
 	$0
 };
+
 endsnippet
 
+snippet env "Export named variable in ES6 syntax"
+export const ${1:exportVariable} = ${2:localVariable};
 
-snippet component "React UI component module" !
-/**
- * @providesModule $1
- * @jsx React.DOM
- */
+endsnippet
 
-var React = require('React');
+snippet enf "Export named function in ES6 syntax"
+export const ${1:functionName} = (${2:params}) => {
+	$0
+};
 
-var ${1:`!p snip.rv = snip.basename`} = React.createClass({
-	render: function() {
-		return (
-			<${2:tag}`!p snip.rv = ' ' if t[3] else ''`${3:className={${4:cssClass}}}>
-				`!p snip.rv = '' if t[3].endswith('/') else  '  '`${VISUAL}$0
-			`!p snip.rv = '' if t[3].endswith('/') else '</' + (t[2].split()[0] if t[2].split() else '') + '>'`
-		);
-	}
+endsnippet
+
+snippet edf "Export default function in ES6 syntax"
+export default function ${1:${TM_FILENAME_BASE}}(${2:params}) {
+	$0
+};
+
+endsnippet
+
+snippet ecl "Export default class in ES6 syntax"
+export default class ${1:className} {
+	$0
+};
+
+endsnippet
+
+snippet ece "Export default class which extends a base one in ES6 syntax"
+export default class ${1:className} extends ${2:baseclassName} {
+	$0
+};
+
+endsnippet
+
+snippet con "Add default constructor in a class in ES6 syntax"
+constructor(${1:params}) {
+	${0}
+}
+endsnippet
+
+snippet met "Creates a method inside a class in ES6 syntax"
+${1:methodName}(${2:params}) {
+	${0}
+}
+endsnippet
+
+snippet pge "Creates a getter property inside a class in ES6 syntax"
+get ${1:propertyName}() {
+	return this.${0};
+}
+endsnippet
+
+snippet pse "Creates a setter property inside a class in ES6 syntax"
+set ${1:propertyName}(${2:value}) {
+	${0};
+}
+endsnippet
+
+snippet fre "Creates a forEach statement in ES6 syntax"
+${1:array}.forEach(${2:currentItem} => {
+	${0}
 });
-
-module.exports = $1;
 endsnippet
 
-# The following fails when doing var x = lam<tab><type_anything>
-# var ${1:varName}`!p snip.rv = ' = ' if not (len(t[2]) == 0) else ''`${2:boundValue};
-snippet v "var" !
-var ${1:varName} = ${VISUAL}$0;
-endsnippet
-
-snippet =set "class set" w
-={{${1:key}:${0:true}}}
-endsnippet
-
-snippet ={set "class set" w
-={{${1:key}:${0:true}}
-endsnippet
-
-
-snippet : "keyval" !
-${1:key}: ${0:val}
-endsnippet
-
-snippet :f "keyvalFunc" !
-${1:key}: function(${2:args}) {
-	$0
+snippet fof "Iterating over property names of iterable objects"
+for (const ${1:item} of ${2:object}) {
+	${0}
 }
 endsnippet
 
-snippet init, "getInitialState" !
-getInitialState: function(${1:args}) {
-	$0
-},
-endsnippet
-
-snippet init "getInitialState" !
-getInitialState: function(${1:args}) {
-	$0
+snippet fin "Iterating over property values of iterable objects"
+for (const ${1:item} in ${2:object}) {
+	${0}
 }
 endsnippet
 
-snippet :f, "keyvalFuncComma" !
-${1:key}: function(${2:args}) {
-	$0
-},
-endsnippet
-
-snippet :o "keyvalObjComma" !
-${1:key}: {
-	${2:key}: ${3:val}
+snippet fn "Creates a named function"
+function ${1:name} (${2:params}) => {
+	${3}
 }
 endsnippet
 
-snippet :o, "keyvalObjComma" !
-${1:key}: {
-	${2:key}: ${3:val}
-},
-endsnippet
-
-snippet lam "lambda" !w
-function(${1:args}) {
-	$0
+snippet ofn "Creates an object function"
+${1:name} (${2:params}) => {
+	${3}
 }
 endsnippet
 
-
-snippet lam; "lambda;" !w
-function(${1:args}) {
-	$0
-};
-endsnippet
-
-snippet lam, "lambda," !w
-function(${1:args}) {
-	$0
-},
-endsnippet
-
-
-snippet o "obj" !
-{
-	${1:key}: ${0:val}
+snippet afn "Creates an anonymous function in ES6 syntax"
+(${1:params}) => {
+	${2}
 }
 endsnippet
 
-snippet o; "obj;" !
-{
-	${1:key}: ${0:val}
-};
-endsnippet
-
-snippet o, "obj," !
-{
-	${1:key}: ${0:val}
-},
-endsnippet
-
-snippet }, "}," !
-},
-${1:key}: ${0}
-endsnippet
-
-# w means word boundary
-snippet tt "ternary" !w
-${1:test} ? ${2:this} : ${3:that}
-endsnippet
-
-snippet { "braces" !w
-{
-	$0
+snippet nfn "Creates a named function in ES6 syntax"
+const ${1:name} = (${2:params}) => {
+	${3}
 }
 endsnippet
 
-snippet r "require" !
-var ${1:ModuleName} = require('$1');$0
+snippet dob "Creates and assigns a local variable using object destructing"
+const {${2:propertyName}} = ${1:objectToDestruct};
 endsnippet
 
-snippet el "else"
-else {
-	${VISUAL}$0
-}
+snippet dar "Creates and assigns a local variable using array destructing"
+const [${2:propertyName}] = ${1:arrayToDestruct};
 endsnippet
 
-snippet json "JSON.stringify()" !w
-JSON.stringify($0)
+snippet sti "Executes the given function at specified intervals in ES6 syntax"
+setInterval(() => {
+	${2}
+}, ${0:intervalInms});
 endsnippet
 
-snippet jsonp "JSON.parse()" !w
-JSON.parse($0)
+snippet sto "Executes the given function after the specified delay in ES6 syntax"
+setTimeout(() => {
+	${2}
+}, ${1:delayInms});
 endsnippet
 
-snippet log "log"
-console.log($0)
+snippet prom "Creates and returns a new Promise in the standard ES6 syntax"
+return new Promise((resolve, reject) => {
+	${1}
+});
 endsnippet
 
-snippet logs "logs"
-console.log('$0')
+snippet thenc "Add the .then and .catch methods to handle promises"
+.then((${1:result}) => {
+	${2}
+}).catch((${3:err}) => {
+	${4}
+});
 endsnippet
 
-snippet logsif "if (x) log"
-if (${1:cond}) {
-	console.log('$0');
-}
+snippet cas "If the specified expression is false, the message is written to the console along with a stack trace"
+console.assert(${1:expression}, ${2:object});
 endsnippet
 
-snippet logo "logobject"
-console.log("$1:" + JSON.stringify($1));
+snippet ccl "Clears the console"
+console.clear();
 endsnippet
 
-
-snippet fun "function(fun)" !
-function ${1:function_name}(${2:argument}) {
-	${0:// body...}
-}
+snippet cco "Writes the the number of times that count() has been invoked at the same line and with the same label"
+console.count(${1:label});
 endsnippet
 
-# vim:ft=snippets:
+snippet cdb "Displays a message in the console. Also display a blue right arrow icon along with the logged message in Safari"
+console.debug(${1:object});
+endsnippet
+
+snippet cdi "Prints a JavaScript representation of the specified object"
+console.dir(${1:object});
+endsnippet
+
+snippet cer "Displays a message in the console and also includes a stack trace from where the method was called"
+console.error(${1:object});
+endsnippet
+
+snippet cgr "Groups and indents all following output by an additional level, until console.groupEnd() is called."
+console.group('${1:label}');
+endsnippet
+
+snippet cge "Closes out the corresponding console.group()."
+console.groupEnd();
+endsnippet
+
+snippet clg "Displays a message in the console"
+console.log(${1:object});
+endsnippet
+
+snippet clo "Displays an object in the console with its name"
+console.log('${1:object} :>> ', ${1:object});
+endsnippet
+
+snippet ctr "Prints a stack trace from the point where the method was called"
+console.trace(${1:object});
+endsnippet
+
+snippet cwa "Displays a message in the console but also displays a yellow warning icon along with the logged message"
+console.warn(${1:object});
+endsnippet
+
+snippet cin "Displays a message in the console but also displays a blue information icon along with the logged message"
+console.info(${1:object});
+endsnippet
+
+snippet clt "Displays tabular data as a table."
+console.table(${1:object});
+endsnippet
+
+snippet cti "Sets starting point for execution time measurement"
+console.time(${1:object});
+endsnippet
+
+snippet cte "Sets end point for execution time measurement"
+console.timeEnd(${1:object});
+endsnippet
