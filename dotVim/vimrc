@@ -60,6 +60,10 @@ let g:ale_fixers = {
 \   '*': ['eslint'],
 \}
 "
+"
+" Surround
+let g:surround_{char2nr("<")} = "<\r>"
+
 
 " ====================== BootStrap 
 au BufNewFile,BufReadPost *.wxml set ft=html
@@ -99,7 +103,6 @@ set suffixesadd=.js,.jsx,.es,.es6,.cjs,.mjs,.jsm,.vue,.json
 " =================== Keys Mapping
 noremap <Space>l :ALEFix<CR>
 noremap <Space>f :Prettier<CR>
-
 noremap <Space>e :e .<CR>
 noremap <Space>E :e <C-R>=projectroot#guess().'/'<CR>
 noremap <Space>cp :let @+ = expand("%:p")<CR>
@@ -111,6 +114,8 @@ noremap <Space>y "+y
 noremap <Space>Y "+Y
 
 cnoremap :: <C-R>=projectroot#guess().'/'<CR>
+" div => <div><div>
+imap <S-Tab> <Esc>yiWi<<Esc>Ea><CR><<C-r>"><Esc>O
 
 nnoremap <C-s> :w<CR>
 vnoremap <C-s> <Esc><C-s>gv
