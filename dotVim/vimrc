@@ -29,19 +29,15 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 
-
 " OneDark
 let g:onedark_hide_endofbuffer=1
 let g:onedark_termcolors=256
-"Use 24-bit (true-color) mode in Vim
-if (has("termguicolors"))
-  set termguicolors
-endif
 
 " UltiSnips
 let g:UltiSnipsSnippetsDir="~/.vim"
 let g:UltiSnipsSnippetDirectories=["myUltiSnippets"]
-
+" populate arglist and clean all, for autocompletion for the snippets item name
+au VimEnter * silent! argadd ~/.vim/myUltiSnippets/*.snippets | argdelete *
 
 " ALE
 let g:ale_sign_column_always = 1
@@ -59,21 +55,17 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   '*': ['eslint'],
 \}
-"
-"
-" Surround
-let g:surround_{char2nr("<")} = "<\r>"
 
+" Surround
+let g:surround_{char2nr(">")} = "<\r>"
 
 " ====================== BootStrap 
 au BufNewFile,BufReadPost *.wxml set ft=html
 au BufNewFile,BufReadPost *.wxss set ft=css
 au BufEnter * silent! lcd %:p:h
 
-colorscheme onedark
 filetype plugin indent on
 syntax on
-
 set autoindent
 set autoread
 set backspace=indent,eol,start
@@ -87,25 +79,28 @@ set incsearch
 set laststatus=2
 set statusline=%F
 set number
-set path+=**
 set ruler
 set ignorecase
 set smartcase
 set tabstop=2 shiftwidth=2
 set expandtab
+set undodir=/tmp
+set undofile
 set wildmenu
 set wildmode=list:longest,full
-set undofile
-set undodir=~/.vim/undo
+set path+=$PWD/**
+set wildignore+=**/node_modules/** 
 set includeexpr=substitute(v:fname,'^\\/','','')
 set suffixesadd=.js,.jsx,.es,.es6,.cjs,.mjs,.jsm,.vue,.json
+set termguicolors
+colorscheme onedark
 
 " =================== Keys Mapping
 noremap <Space>l :ALEFix<CR>
 noremap <Space>f :Prettier<CR>
+
 noremap <Space>e :e .<CR>
 noremap <Space>E :e <C-R>=projectroot#guess().'/'<CR>
-noremap <Space>cp :let @+ = expand("%:p")<CR>
 
 noremap <Space>so :source $MYVIMRC<CR>
 noremap <Space>. :e $MYVIMRC<CR>
@@ -113,9 +108,15 @@ noremap <Space>. :e $MYVIMRC<CR>
 noremap <Space>y "+y
 noremap <Space>Y "+Y
 
+noremap <Space>cp :let @+ = expand("%:p")<CR>
 cnoremap :: <C-R>=projectroot#guess().'/'<CR>
-" div => <div><div>
-imap <S-Tab> <Esc>yiWi<<Esc>Ea><CR><<C-r>"><Esc>O
+
+" Silent Shell Command
+:command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
+nnoremap ! :Silent 
+
+" Emmet like: div => <div><div>
+inoremap <S-Tab> <Esc>yiWi<<Esc>Emma><<C-r>"><Esc>`ma
 
 nnoremap <C-s> :w<CR>
 vnoremap <C-s> <Esc><C-s>gv
