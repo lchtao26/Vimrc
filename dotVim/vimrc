@@ -15,6 +15,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'skywind3000/asyncrun.vim'
 call vundle#end()
 
 " Netrw
@@ -60,8 +61,9 @@ let g:ale_fixers = {
 let g:surround_{char2nr(">")} = "<\r>"
 
 " ====================== BootStrap 
-au BufNewFile,BufReadPost *.wxml set ft=html
-au BufNewFile,BufReadPost *.wxss set ft=css
+au BufNewFile,BufReadPost *.wxml set ft=wxml.html
+au BufNewFile,BufReadPost *.wxss set ft=wxss.css
+au BufNewFile,BufReadPost *.jsx set ft=javascript.javascriptreact
 au BufEnter * silent! lcd %:p:h
 
 filetype plugin indent on
@@ -96,32 +98,38 @@ set termguicolors
 colorscheme onedark
 
 " =================== Keys Mapping
-noremap <Space>l :ALEFix<CR>
+
 noremap <Space>f :Prettier<CR>
+noremap <Space>l :ALEFix<CR>
+noremap <Space>! :AsyncRun 
+" Emmet like: div => <div><div>
+
+noremap <Space>. :e $MYVIMRC<CR>
+noremap <Space>so :so $MYVIMRC<CR>
 
 noremap <Space>e :e .<CR>
-noremap <Space>E :e <C-R>=projectroot#guess().'/'<CR>
+noremap <Space>E :e <C-R>=projectroot#guess().'/'<CR><CR>
 
-noremap <Space>so :source $MYVIMRC<CR>
-noremap <Space>. :e $MYVIMRC<CR>
+" Copy current file path
+noremap <Space>cp :let @+ = expand("%:p")<CR>
 
 noremap <Space>y "+y
 noremap <Space>Y "+Y
 
-noremap <Space>cp :let @+ = expand("%:p")<CR>
-cnoremap :: <C-R>=projectroot#guess().'/'<CR>
 
-" Silent Shell Command
-:command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
-nnoremap ! :Silent 
+inoremap <S-Tab> <Esc>yiWi<<Esc>Emma></<C-r>"><Esc>`ma
+nnoremap S :w<CR>
+nnoremap Q :q<CR>
+nnoremap U <C-u>
+nnoremap D <C-d>
 
-" Emmet like: div => <div><div>
-inoremap <S-Tab> <Esc>yiWi<<Esc>Emma><<C-r>"><Esc>`ma
-
-nnoremap <C-s> :w<CR>
-vnoremap <C-s> <Esc><C-s>gv
-inoremap <C-s> <Esc><C-s>
-
-noremap <C-n> :tabnew<Cr>
 noremap L :tabnext<CR>
 noremap H :tabprevious<CR>
+noremap <C-n> :tabnew<Cr>
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+cnoremap :: <C-R>=projectroot#guess().'/'<CR>
