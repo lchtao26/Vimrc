@@ -4,18 +4,18 @@ call vundle#begin()
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'bronson/vim-visual-star-search'
 Plugin 'brooth/far.vim'
-Plugin 'darthmall/vim-vue'
 Plugin 'dbakker/vim-projectroot'
 Plugin 'dense-analysis/ale'
 Plugin 'joshdick/onedark.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'prettier/vim-prettier'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'darthmall/vim-vue'
 Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
+"Plugin 'tpope/vim-obsession'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'skywind3000/asyncrun.vim'
 call vundle#end()
 
 " Netrw
@@ -120,8 +120,6 @@ noremap <Space>Y "+Y
 inoremap <S-Tab> <Esc>yiWi<<Esc>Emma></<C-r>"><Esc>`ma
 nnoremap S :w<CR>
 nnoremap Q :q<CR>
-nnoremap U <C-u>
-nnoremap D <C-d>
 
 noremap L :tabnext<CR>
 noremap H :tabprevious<CR>
