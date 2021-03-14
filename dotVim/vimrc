@@ -14,7 +14,7 @@ Plugin 'darthmall/vim-vue'
 Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-"Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-obsession'
 Plugin 'VundleVim/Vundle.vim'
 call vundle#end()
 
@@ -102,7 +102,7 @@ colorscheme onedark
 noremap <Space>f :Prettier<CR>
 noremap <Space>l :ALEFix<CR>
 noremap <Space>! :AsyncRun 
-" Emmet like: div => <div><div>
+nmap <Space>r <Plug>NetrwRefresh
 
 noremap <Space>. :e $MYVIMRC<CR>
 noremap <Space>so :so $MYVIMRC<CR>
@@ -117,6 +117,7 @@ noremap <Space>y "+y
 noremap <Space>Y "+Y
 
 
+" Emmet like: div => <div><div>
 inoremap <S-Tab> <Esc>yiWi<<Esc>Emma></<C-r>"><Esc>`ma
 nnoremap S :w<CR>
 nnoremap Q :q<CR>
@@ -125,9 +126,9 @@ noremap L :tabnext<CR>
 noremap H :tabprevious<CR>
 noremap <C-n> :tabnew<Cr>
 
+cnoremap :: <C-R>=projectroot#guess().'/'<CR>
+
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-
-cnoremap :: <C-R>=projectroot#guess().'/'<CR>
