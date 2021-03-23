@@ -1,21 +1,19 @@
 " ========================== Plugin
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'bronson/vim-visual-star-search'
-Plugin 'brooth/far.vim'
-Plugin 'dbakker/vim-projectroot'
-Plugin 'dense-analysis/ale'
-Plugin 'joshdick/onedark.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'prettier/vim-prettier'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'darthmall/vim-vue'
-Plugin 'SirVer/ultisnips'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-obsession'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'https://github.com.cnpmjs.org/joshdick/onedark.vim'
+Plugin 'https://github.com.cnpmjs.org/AndrewRadev/splitjoin.vim'
+Plugin 'https://github.com.cnpmjs.org/tpope/vim-surround'
+Plugin 'https://github.com.cnpmjs.org/tpope/vim-commentary'
+Plugin 'https://github.com.cnpmjs.org/bronson/vim-visual-star-search'
+Plugin 'https://github.com.cnpmjs.org/dense-analysis/ale'
+Plugin 'https://github.com.cnpmjs.org/prettier/vim-prettier'
+Plugin 'https://github.com.cnpmjs.org/sheerun/vim-polyglot'
+Plugin 'https://github.com.cnpmjs.org/darthmall/vim-vue'
+Plugin 'https://github.com.cnpmjs.org/dbakker/vim-projectroot'
+Plugin 'https://github.com.cnpmjs.org/kien/ctrlp.vim'
+Plugin 'https://github.com.cnpmjs.org/SirVer/ultisnips'
 call vundle#end()
 
 " Netrw
@@ -37,8 +35,6 @@ let g:onedark_termcolors=256
 " UltiSnips
 let g:UltiSnipsSnippetsDir="~/.vim"
 let g:UltiSnipsSnippetDirectories=["myUltiSnippets"]
-" populate arglist and clean all, for autocompletion for the snippets item name
-au VimEnter * silent! argadd ~/.vim/myUltiSnippets/*.snippets | argdelete *
 
 " ALE
 let g:ale_sign_column_always = 1
@@ -61,10 +57,15 @@ let g:ale_fixers = {
 let g:surround_{char2nr(">")} = "<\r>"
 
 " ====================== BootStrap 
-au BufNewFile,BufReadPost *.wxml set ft=wxml.html
-au BufNewFile,BufReadPost *.wxss set ft=wxss.css
-au BufNewFile,BufReadPost *.jsx set ft=javascript.javascriptreact
-au BufEnter * silent! lcd %:p:h
+augroup init
+  autocmd!
+" populate arglist and clean all, for autocompletion for the snippets item name
+  autocmd VimEnter * silent! argadd ~/.vim/myUltiSnippets/*.snippets | argdelete *
+  autocmd BufEnter * silent! lcd %:p:h
+  autocmd BufNewFile,BufReadPost *.wxml set ft=wxml.html
+  autocmd BufNewFile,BufReadPost *.wxss set ft=wxss.css
+  autocmd BufNewFile,BufReadPost *.jsx set ft=javascript.javascriptreact
+augroup END
 
 filetype plugin indent on
 syntax on
@@ -93,29 +94,29 @@ set wildmode=list:longest,full
 set path+=$PWD/**
 set wildignore+=**/node_modules/** 
 set includeexpr=substitute(v:fname,'^\\/','','')
-set suffixesadd=.js,.jsx,.es,.es6,.cjs,.mjs,.jsm,.vue,.json
+set suffixesadd=.js,.jsx,.es,.es6,.cjs,.mjs,.jsm,.vue,.json,.ts
 set termguicolors
 colorscheme onedark
 
 " =================== Keys Mapping
+let mapleader = " "
+nnoremap <Leader>f :Prettier<CR>
+nnoremap <Leader>l :ALEFix<CR>
+nnoremap <Leader>r <Plug>NetrwRefresh
 
-noremap <Space>f :Prettier<CR>
-noremap <Space>l :ALEFix<CR>
-noremap <Space>! :AsyncRun 
-nmap <Space>r <Plug>NetrwRefresh
-
-noremap <Space>. :e $MYVIMRC<CR>
-noremap <Space>so :so $MYVIMRC<CR>
-
-noremap <Space>e :e .<CR>
-noremap <Space>E :e <C-R>=projectroot#guess().'/'<CR><CR>
+noremap <Leader>. :vs $MYVIMRC<CR>
+noremap <Leader>so :so $MYVIMRC<CR>
 
 " Copy current file path
-noremap <Space>cp :let @+ = expand("%:p")<CR>
+noremap <Leader>cp :let @+ = expand("%:p")<CR>
+" Quick directory change
+nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
-noremap <Space>y "+y
-noremap <Space>Y "+Y
+noremap <Leader>y "+y
+noremap <Leader>Y "+Y
 
+nnoremap ! :!
+cnoremap :: <C-R>=projectroot#guess().'/'<CR>
 
 " Emmet like: div => <div><div>
 inoremap <S-Tab> <Esc>yiWi<<Esc>Emma></<C-r>"><Esc>`ma
@@ -126,7 +127,6 @@ noremap L :tabnext<CR>
 noremap H :tabprevious<CR>
 noremap <C-n> :tabnew<Cr>
 
-cnoremap :: <C-R>=projectroot#guess().'/'<CR>
 
 map <C-h> <C-w>h
 map <C-j> <C-w>j
