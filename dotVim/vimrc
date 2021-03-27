@@ -2,16 +2,14 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'https://github.com.cnpmjs.org/joshdick/onedark.vim'
+Plugin 'joshdick/onedark.vim'
 Plugin 'https://github.com.cnpmjs.org/AndrewRadev/splitjoin.vim'
 Plugin 'https://github.com.cnpmjs.org/tpope/vim-surround'
-Plugin 'https://github.com.cnpmjs.org/tpope/vim-commentary'
 Plugin 'https://github.com.cnpmjs.org/bronson/vim-visual-star-search'
 Plugin 'https://github.com.cnpmjs.org/dense-analysis/ale'
 Plugin 'https://github.com.cnpmjs.org/prettier/vim-prettier'
 Plugin 'https://github.com.cnpmjs.org/sheerun/vim-polyglot'
 Plugin 'https://github.com.cnpmjs.org/darthmall/vim-vue'
-Plugin 'https://github.com.cnpmjs.org/dbakker/vim-projectroot'
 Plugin 'https://github.com.cnpmjs.org/kien/ctrlp.vim'
 Plugin 'https://github.com.cnpmjs.org/SirVer/ultisnips'
 call vundle#end()
@@ -108,7 +106,7 @@ noremap <Leader>. :vs $MYVIMRC<CR>
 noremap <Leader>so :so $MYVIMRC<CR>
 
 " Copy current file path
-noremap <Leader>cp :let @+ = expand("%:p")<CR>
+noremap <Leader>cp :let @+ = expand("%:~")<CR>
 " Quick directory change
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
@@ -116,7 +114,6 @@ noremap <Leader>y "+y
 noremap <Leader>Y "+Y
 
 nnoremap ! :!
-cnoremap :: <C-R>=projectroot#guess().'/'<CR>
 
 " Emmet like: div => <div><div>
 inoremap <S-Tab> <Esc>yiWi<<Esc>Emma></<C-r>"><Esc>`ma

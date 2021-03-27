@@ -1,6 +1,5 @@
 .DS_Store
 .netrwhist
-dotVim/undo
 dotVim/bundle/*
 !dotVim/bundle/Vundle.vim
 !dotVim/bundle/onedark.vim
