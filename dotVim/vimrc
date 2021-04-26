@@ -106,9 +106,9 @@ noremap <Leader>. :vs $MYVIMRC<CR>
 noremap <Leader>so :so $MYVIMRC<CR>
 
 " Copy current file path
-noremap <Leader>cp :let @+ = expand("%:~")<CR>
+noremap <Leader>cp :lcd %:p:h<CR> :let @+=expand("%:~")<CR>
 " Quick directory change
-nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>cd :lcd %:p:h<CR>:pwd<CR>
 
 noremap <Leader>y "+y
 noremap <Leader>Y "+Y
