@@ -4,3 +4,6 @@
 [submodule "dotVim/bundle/onedark.vim"]
 	path = dotVim/bundle/onedark.vim
 	url = https://github.com.cnpmjs.org/joshdick/onedark.vim
+[submodule "dotVim/bundle/coc.vim"]
+	path = dotVim/bundle/coc.vim
+	url = https://github.com.cnpmjs.org/neoclide/coc.nvim

@@ -1,0 +1,16 @@
+{
+  // make vim select first item on completion
+  "suggest.noselect": false,
+  "list.source.files.excludePatterns": [
+    "**/node_modules/**",
+    "**/node_modules/**/.*",
+    "**/node_modules/**/.*/**",
+    "**/dist/**",
+    "**/.git/**"
+  ],
+  "session.directory": "/tmp",
+  "snippets.extends": {
+    "vue": ["html", "javascript", "css"],
+    "javascriptreact": ["javascript"]
+  }
+}

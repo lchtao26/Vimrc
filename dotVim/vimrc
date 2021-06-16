@@ -1,72 +1,18 @@
-" ========================== Plugin
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'joshdick/onedark.vim'
-Plugin 'https://github.com.cnpmjs.org/AndrewRadev/splitjoin.vim'
-Plugin 'https://github.com.cnpmjs.org/tpope/vim-surround'
-Plugin 'https://github.com.cnpmjs.org/bronson/vim-visual-star-search'
-Plugin 'https://github.com.cnpmjs.org/dense-analysis/ale'
-Plugin 'https://github.com.cnpmjs.org/prettier/vim-prettier'
-Plugin 'https://github.com.cnpmjs.org/sheerun/vim-polyglot'
-Plugin 'https://github.com.cnpmjs.org/darthmall/vim-vue'
-Plugin 'https://github.com.cnpmjs.org/kien/ctrlp.vim'
-Plugin 'https://github.com.cnpmjs.org/SirVer/ultisnips'
-call vundle#end()
-
-" Netrw
-let g:netrw_list_hide= '.*\.swp$,.*\.swo$'
-
-" CtrlP
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_use_caching = 0
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$\|dist',
-  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
-  \ }
-
-" OneDark
-let g:onedark_hide_endofbuffer=1
-let g:onedark_termcolors=256
-
-" UltiSnips
-let g:UltiSnipsSnippetsDir="~/.vim"
-let g:UltiSnipsSnippetDirectories=["myUltiSnippets"]
-
-" ALE
-let g:ale_sign_column_always = 1
-let g:ale_linters_explicit = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save=1
-
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'vue': ['eslint'],
-\   'javascriptreact': ['eslint'],
-\}
-let g:ale_fixers = {
-\   '*': ['eslint'],
-\}
-
-" Surround
-let g:surround_{char2nr(">")} = "<\r>"
-
 " ====================== BootStrap 
 augroup init
   autocmd!
-" populate arglist and clean all, for autocompletion for the snippets item name
-  autocmd VimEnter * silent! argadd ~/.vim/myUltiSnippets/*.snippets | argdelete *
   autocmd BufEnter * silent! lcd %:p:h
-  autocmd BufNewFile,BufReadPost *.wxml set ft=wxml.html
-  autocmd BufNewFile,BufReadPost *.wxss set ft=wxss.css
-  autocmd BufNewFile,BufReadPost *.jsx set ft=javascript.javascriptreact
+  autocmd BufNewFile,BufReadPost *.wxml set ft=html
+  autocmd BufNewFile,BufReadPost *.wxss set ft=css
 augroup END
 
 filetype plugin indent on
 syntax on
+set hidden
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 set autoindent
 set autoread
 set backspace=indent,eol,start
@@ -74,15 +20,10 @@ set visualbell
 set cursorline
 set complete+=k
 set dictionary+=/usr/share/dict/words
-set hidden
-set hlsearch
-set incsearch
 set laststatus=2
 set statusline=%F
 set number
 set ruler
-set ignorecase
-set smartcase
 set tabstop=2 shiftwidth=2
 set expandtab
 set undodir=/tmp
@@ -93,15 +34,9 @@ set path+=$PWD/**
 set wildignore+=**/node_modules/** 
 set includeexpr=substitute(v:fname,'^\\/','','')
 set suffixesadd=.js,.jsx,.es,.es6,.cjs,.mjs,.jsm,.vue,.json,.ts
-set termguicolors
-colorscheme onedark
 
 " =================== Keys Mapping
 let mapleader = " "
-nnoremap <Leader>f :Prettier<CR>
-nnoremap <Leader>l :ALEFix<CR>
-nnoremap <Leader>r <Plug>NetrwRefresh
-
 noremap <Leader>. :vs $MYVIMRC<CR>
 noremap <Leader>so :so $MYVIMRC<CR>
 
@@ -124,8 +59,90 @@ noremap L :tabnext<CR>
 noremap H :tabprevious<CR>
 noremap <C-n> :tabnew<Cr>
 
-
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+ 
+" ========================== Plugin
+set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/onedark.vim
+set rtp+=~/.vim/bundle/coc.vim
+call vundle#begin()
+Plugin 'https://github.com.cnpmjs.org/AndrewRadev/splitjoin.vim'
+Plugin 'https://github.com.cnpmjs.org/tpope/vim-surround'
+Plugin 'https://github.com.cnpmjs.org/bronson/vim-visual-star-search'
+Plugin 'https://github.com.cnpmjs.org/sheerun/vim-polyglot'
+Plugin 'https://github.com.cnpmjs.org/darthmall/vim-vue'
+Plugin 'https://github.com.cnpmjs.org/sdras/vue-vscode-snippets'
+call vundle#end()
+
+" OneDark
+set termguicolors
+colorscheme onedark
+
+" Netrw
+nnoremap <Leader>r <Plug>NetrwRefresh
+let g:netrw_list_hide= '.*\.swp$,.*\.swo$'
+
+" Coc ------------ Start ------------
+let g:coc_global_extensions = [
+      \ 'coc-json',
+      \ 'coc-tsserver',
+      \ 'coc-snippets',
+      \ 'coc-lists',
+      \ 'coc-yank',
+      \ 'coc-eslint',
+      \ 'coc-prettier',
+      \ ]
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+" Always show the signcolumn, otherwise it would shift the text each time
+set signcolumn=yes
+" Provide custom statusline
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Mappings for CoCList
+" Search files
+nnoremap <silent><nowait> <c-p>  :<C-u>CocList files<cr>
+" Show yanked.
+nnoremap <silent><nowait> <c-\>  :<C-u>CocList yank<cr>
+" Show all diagnostics.
+nnoremap <silent><nowait> <leader>dl  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <leader>ex  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <leader>co  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <leader>ol  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <leader>sb  :<C-u>CocList -I symbols<cr>
+
+" Coc-Extension: Snippets
+" Make <tab> used for trigger completion, completion confirm, snippet expand and jump.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+" Coc ------------ end ------------

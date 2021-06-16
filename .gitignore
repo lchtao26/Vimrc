@@ -3,3 +3,4 @@
 dotVim/bundle/*
 !dotVim/bundle/Vundle.vim
 !dotVim/bundle/onedark.vim
+!dotVim/bundle/coc.vim
