@@ -18,7 +18,8 @@ ln -sv `pwd`/dotVim ~/.config/nvim
 # Link to vim
 ln -sv `pwd`/dotVim ~/.vim
 
-# Fetch bundles
+echo '\n'
+echo '- Fetching submodules'
 git submodule init
 git submodule update
 

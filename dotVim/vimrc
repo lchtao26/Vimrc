@@ -67,14 +67,20 @@ map <C-l> <C-w>l
 " ========================== Plugin
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/onedark.vim
-set rtp+=~/.vim/bundle/coc.vim
+set rtp+=~/.vim/bundle/coc.nvim
 call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'joshdick/onedark.vim'
+Plugin 'neoclide/coc.nvim'
+
 Plugin 'https://github.com.cnpmjs.org/AndrewRadev/splitjoin.vim'
 Plugin 'https://github.com.cnpmjs.org/tpope/vim-surround'
 Plugin 'https://github.com.cnpmjs.org/bronson/vim-visual-star-search'
 Plugin 'https://github.com.cnpmjs.org/sheerun/vim-polyglot'
 Plugin 'https://github.com.cnpmjs.org/darthmall/vim-vue'
+
 Plugin 'https://github.com.cnpmjs.org/sdras/vue-vscode-snippets'
+Plugin 'https://github.com/abusaidm/html-snippets'
 call vundle#end()
 
 " OneDark
