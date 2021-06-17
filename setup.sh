@@ -19,8 +19,8 @@ ln -sv `pwd`/dotVim ~/.config/nvim
 ln -sv `pwd`/dotVim ~/.vim
 
 echo '\n'
-echo '- Install plugins'
-vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa"
+echo '- Install plugins...'
+vim -es -u dotVim/pluginrc -i NONE -c "PlugInstall" -c "qa"
 
 echo '\n'
 echo '- Setup complete!'

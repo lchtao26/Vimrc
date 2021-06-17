@@ -1,2 +1,2 @@
-colorscheme onedark
+:silent! colorscheme onedark
 set termguicolors

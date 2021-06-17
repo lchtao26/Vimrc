@@ -1,0 +1,15 @@
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+call plug#begin()
+Plug 'https://github.com.cnpmjs.org/joshdick/onedark.vim'
+Plug 'https://github.com.cnpmjs.org/neoclide/coc.nvim'
+Plug 'https://github.com.cnpmjs.org/AndrewRadev/splitjoin.vim'
+Plug 'https://github.com.cnpmjs.org/tpope/vim-surround'
+Plug 'https://github.com.cnpmjs.org/bronson/vim-visual-star-search'
+Plug 'https://github.com.cnpmjs.org/sheerun/vim-polyglot'
+Plug 'https://github.com.cnpmjs.org/darthmall/vim-vue'
+Plug 'https://github.com.cnpmjs.org/sdras/vue-vscode-snippets'
+Plug 'https://github.com/abusaidm/html-snippets'
+call plug#end()

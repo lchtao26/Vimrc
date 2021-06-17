@@ -31,6 +31,10 @@ let mapleader = " "
 noremap <Leader>. :vs $MYVIMRC<CR>
 noremap <Leader>so :so $MYVIMRC<CR>
 
+" Move in NetrwRefresh
+nnoremap <Leader>r <Plug>NetrwRefresh
+let g:netrw_list_hide= '.*\.swp$,.*\.swo$'
+
 " Copy current file path
 noremap <Leader>cp :lcd %:p:h<CR> :let @+=expand("%:~")<CR>
 " Quick directory change
@@ -64,19 +68,4 @@ augroup init
 augroup END
 
 " ========================== Plugin
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-call plug#begin()
-Plug 'https://github.com.cnpmjs.org/joshdick/onedark.vim'
-Plug 'https://github.com.cnpmjs.org/neoclide/coc.nvim'
-Plug 'https://github.com.cnpmjs.org/AndrewRadev/splitjoin.vim'
-Plug 'https://github.com.cnpmjs.org/tpope/vim-surround'
-Plug 'https://github.com.cnpmjs.org/bronson/vim-visual-star-search'
-Plug 'https://github.com.cnpmjs.org/sheerun/vim-polyglot'
-Plug 'https://github.com.cnpmjs.org/darthmall/vim-vue'
-Plug 'https://github.com.cnpmjs.org/sdras/vue-vscode-snippets'
-Plug 'https://github.com/abusaidm/html-snippets'
-call plug#end()
-
+source ~/.vim/pluginrc
