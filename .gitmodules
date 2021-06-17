@@ -1,9 +1,0 @@
-[submodule "dotVim/bundle/Vundle.vim"]
-	path = dotVim/bundle/Vundle.vim
-	url = https://github.com.cnpmjs.org/VundleVim/Vundle.vim
-[submodule "dotVim/bundle/onedark.vim"]
-	path = dotVim/bundle/onedark.vim
-	url = https://github.com.cnpmjs.org/joshdick/onedark.vim
-[submodule "dotVim/bundle/coc.nvim"]
-	path = dotVim/bundle/coc.nvim
-	url = https://github.com.cnpmjs.org/neoclide/coc.nvim

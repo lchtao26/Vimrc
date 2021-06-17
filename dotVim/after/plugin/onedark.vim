@@ -1,0 +1,2 @@
+colorscheme onedark
+set termguicolors

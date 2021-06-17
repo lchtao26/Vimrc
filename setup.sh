@@ -19,9 +19,8 @@ ln -sv `pwd`/dotVim ~/.config/nvim
 ln -sv `pwd`/dotVim ~/.vim
 
 echo '\n'
-echo '- Fetching submodules'
-git submodule init
-git submodule update
+echo '- Install plugins'
+vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa"
 
 echo '\n'
 echo '- Setup complete!'
