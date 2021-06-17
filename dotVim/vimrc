@@ -28,20 +28,17 @@ set suffixesadd=.js,.jsx,.es,.es6,.cjs,.mjs,.jsm,.vue,.json,.ts
 
 " =================== Keys Mapping
 let mapleader = " "
-noremap <Leader>. :vs $MYVIMRC<CR>
-noremap <Leader>so :so $MYVIMRC<CR>
+noremap <leader>. :vs $MYVIMRC<CR>
+noremap <leader>so :so $MYVIMRC<CR>
 
-" Move in NetrwRefresh
-nnoremap <Leader>r <Plug>NetrwRefresh
 let g:netrw_list_hide= '.*\.swp$,.*\.swo$'
-
+" Move in NetrwRefresh
+nnoremap <leader>r <Plug>NetrwRefresh
 " Copy current file path
-noremap <Leader>cp :lcd %:p:h<CR> :let @+=expand("%:~")<CR>
-" Quick directory change
-nnoremap <Leader>cd :lcd %:p:h<CR>:pwd<CR>
+noremap <leader>cp :lcd %:p:h<CR> :let @+=expand("%:~")<CR>
 
-noremap <Leader>y "+y
-noremap <Leader>Y "+Y
+noremap <leader>y "+y
+noremap <leader>Y "+Y
 
 nnoremap ! :!
 
@@ -54,6 +51,12 @@ noremap L :tabnext<CR>
 noremap H :tabprevious<CR>
 noremap <C-n> :tabnew<Cr>
 
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -62,7 +65,6 @@ map <C-l> <C-w>l
 " ========================== AutoCMD
 augroup init
   autocmd!
-  autocmd BufEnter * silent! lcd %:p:h
   autocmd BufNewFile,BufReadPost *.wxml set ft=html
   autocmd BufNewFile,BufReadPost *.wxss set ft=css
 augroup END

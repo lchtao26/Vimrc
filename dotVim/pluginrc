@@ -11,5 +11,6 @@ Plug 'https://github.com.cnpmjs.org/bronson/vim-visual-star-search'
 Plug 'https://github.com.cnpmjs.org/sheerun/vim-polyglot'
 Plug 'https://github.com.cnpmjs.org/darthmall/vim-vue'
 Plug 'https://github.com.cnpmjs.org/sdras/vue-vscode-snippets'
-Plug 'https://github.com/abusaidm/html-snippets'
+Plug 'https://github.com/abusaidm/html-snippets', { 'commit': '534b870' }
+
 call plug#end()
