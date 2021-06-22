@@ -6,7 +6,6 @@
     "**/dist/**",
     "**/.git/**"
   ],
-  "session.directory": "/tmp",
   "snippets.ultisnips.directories": ["ultisnips"],
   "snippets.extends": {
     "vue": ["html", "javascript", "css"],

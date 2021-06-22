@@ -13,6 +13,8 @@ set cursorline
 set complete+=k
 set dictionary+=/usr/share/dict/words
 set laststatus=2
+set statusline=%F
+
 set number
 set ruler
 set tabstop=2 shiftwidth=2

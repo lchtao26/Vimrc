@@ -1,4 +1,5 @@
 .DS_Store
 .netrwhist
 init.vim
+sessions
 dotVim/plugged
