@@ -1,14 +1,8 @@
 {
-  "list.source.files.excludePatterns": [
-    "**/node_modules/**",
-    "**/node_modules/**/.*",
-    "**/node_modules/**/.*/**",
-    "**/dist/**",
-    "**/.git/**"
-  ],
   "snippets.ultisnips.directories": ["ultisnips"],
   "snippets.extends": {
     "vue": ["html", "javascript", "css"],
     "javascriptreact": ["javascript"]
-  }
+  },
+  "prettier.printWidth": 180
 }

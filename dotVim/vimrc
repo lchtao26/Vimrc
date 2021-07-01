@@ -14,7 +14,6 @@ set complete+=k
 set dictionary+=/usr/share/dict/words
 set laststatus=2
 set statusline=%F
-
 set number
 set ruler
 set tabstop=2 shiftwidth=2
@@ -27,6 +26,8 @@ set path+=$PWD/**
 set wildignore+=**/node_modules/** 
 set includeexpr=substitute(v:fname,'^\\/','','')
 set suffixesadd=.js,.jsx,.es,.es6,.cjs,.mjs,.jsm,.vue,.json,.ts
+set termguicolors
+colorscheme onedark
 
 " =================== Keys Mapping
 let mapleader = " "
@@ -38,10 +39,8 @@ let g:netrw_list_hide= '.*\.swp$,.*\.swo$'
 nnoremap <leader>r <Plug>NetrwRefresh
 " Copy current file path
 noremap <leader>cp :lcd %:p:h<CR> :let @+=expand("%:~")<CR>
-
 noremap <leader>y "+y
 noremap <leader>Y "+Y
-
 nnoremap ! :!
 
 " Emmet like: div => <div><div>
@@ -69,7 +68,11 @@ augroup init
   autocmd!
   autocmd BufNewFile,BufReadPost *.wxml set ft=html
   autocmd BufNewFile,BufReadPost *.wxss set ft=css
+" Auto install plugins when start vim
+  autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \| PlugInstall --sync | source $MYVIMRC
+  \| endif
 augroup END
 
 " ========================== Plugin
-source ~/.vim/pluginrc
+source ~/.vim/pluginrc.vim

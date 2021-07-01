@@ -1,9 +1,36 @@
+call plug#begin()
+Plug 'https://github.com.cnpmjs.org/AndrewRadev/splitjoin.vim'
+Plug 'https://github.com.cnpmjs.org/tpope/vim-surround'
+Plug 'https://github.com.cnpmjs.org/bronson/vim-visual-star-search'
+Plug 'https://github.com.cnpmjs.org/sheerun/vim-polyglot'
+Plug 'https://github.com.cnpmjs.org/darthmall/vim-vue'
+Plug 'https://github.com.cnpmjs.org/sdras/vue-vscode-snippets'
+Plug 'https://github.com.cnpmjs.org/abusaidm/html-snippets', { 'commit': '534b870' }
+" Some function of Unite need vimproc
+Plug 'https://github.com.cnpmjs.org/Shougo/unite.vim'
+Plug 'https://github.com.cnpmjs.org/Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'https://github.com.cnpmjs.org/neoclide/coc.nvim'
+call plug#end()
+
+
+" Unit ---------------------------------------------------------------- Start
+call unite#custom#source('file,file/new,buffer,file_rec,file_rec/git', 
+                  \ 'matchers', 'matcher_fuzzy')
+call unite#custom#source(
+                  \ 'file,file/new,buffer,file_rec,file_rec/git', 'converters',
+                  \ ['converter_file_directory'])
+nnoremap <silent> <C-p> 
+                  \ :<C-u>Unite -start-insert file_rec/git<CR>
+nnoremap <silent> <C-\> 
+                  \ :<C-u>Unite -start-insert register<CR>
+" Unit ---------------------------------------------------------------- End
+
+
+" Coc ---------------------------------------------------------------- Start
 let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-tsserver',
       \ 'coc-snippets',
-      \ 'coc-lists',
-      \ 'coc-yank',
       \ 'coc-eslint',
       \ 'coc-prettier',
       \ ]
@@ -28,10 +55,6 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Mappings for CoCList
-" Search files
-nnoremap <silent><nowait> <c-p>  :<C-u>CocList files<cr>
-" Show yanked.
-nnoremap <silent><nowait> <c-\>  :<C-u>CocList yank<cr>
 " Show all diagnostics.
 nnoremap <silent><nowait> <leader>dl  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
@@ -45,6 +68,7 @@ nnoremap <silent><nowait> <leader>sb  :<C-u>CocList -I symbols<cr>
 
 " Coc-Extension: Snippets
 " Make <tab> used for trigger completion, completion confirm, snippet expand and jump.
+let g:coc_snippet_next = '<tab>'
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -55,5 +79,4 @@ function! s:check_back_space() abort
 let col = col('.') - 1
 return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-let g:coc_snippet_next = '<tab>'
+" Coc ---------------------------------------------------------------- End
