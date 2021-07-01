@@ -18,9 +18,7 @@ sh ./setup.sh
 - Edit `pluginrc` file if you want to enable/disabled or install/uninstall plugins. It is using [vim-plug](https://github.com/junegunn/vim-plug) as plugin manager.
 - Edit `after/plugin/*.vim` file to change the config for specific plugin. (eg: `after/plugin/coc.vim` is the configuration for [coc](https://github.com/neoclide/coc.nvim))
 
-## Supported Version
-Some Extensions reply on the latest vim/neovim mechanism, It is recommanded to use following versoin or the higher version: 
+## Requirement 
 
-- Vim8.2
-- neovim0.44
-
+- Vim8.0
+- nodejs
