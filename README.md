@@ -21,4 +21,5 @@ sh ./setup.sh
 ## Requirement 
 
 - Vim8.0
-- nodejs
+- git
+- nodeJS
